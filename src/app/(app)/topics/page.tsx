@@ -61,7 +61,7 @@ export default function TopicsPage() {
         </div>
         <Link
           href="/upload"
-          className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white font-medium px-5 py-2.5 rounded-xl transition-colors text-sm self-start"
+          className="inline-flex items-center gap-2 btn-primary font-medium px-5 py-2.5 rounded-full transition-all text-sm self-start"
         >
           <BookOpen className="w-4 h-4" />
           Upload More Notes
@@ -73,7 +73,7 @@ export default function TopicsPage() {
         <select
           value={selectedSubject}
           onChange={(e) => setSelectedSubject(e.target.value)}
-          className="px-4 py-2.5 bg-surface border border-card-border rounded-xl text-foreground text-sm focus:outline-none focus:border-primary"
+          className="px-4 py-2.5 bg-surface border border-card-border rounded-2xl text-foreground text-sm focus:outline-none focus:border-primary"
         >
           <option value="all">All Subjects</option>
           {subjects.map((s) => (
@@ -83,7 +83,7 @@ export default function TopicsPage() {
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-          className="px-4 py-2.5 bg-surface border border-card-border rounded-xl text-foreground text-sm focus:outline-none focus:border-primary"
+          className="px-4 py-2.5 bg-surface border border-card-border rounded-2xl text-foreground text-sm focus:outline-none focus:border-primary"
         >
           <option value="importance">Sort by Importance</option>
           <option value="difficulty">Sort by Difficulty</option>
@@ -93,7 +93,7 @@ export default function TopicsPage() {
 
       {/* Topics List */}
       {filteredTopics.length === 0 ? (
-        <div className="bg-card border border-card-border rounded-2xl p-12 text-center">
+        <div className="bg-card border border-card-border rounded-3xl p-12 text-center">
           <Brain className="w-12 h-12 text-muted mx-auto mb-4" />
           <h3 className="text-lg font-semibold text-foreground mb-2">No Topics Yet</h3>
           <p className="text-muted text-sm">Upload your notes to see AI-extracted topics here.</p>
@@ -118,7 +118,7 @@ function TopicCard({ topic, rank, difficultyColors }: { topic: Topic; rank: numb
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="bg-card border border-card-border rounded-xl overflow-hidden hover:border-primary/30 transition-colors">
+    <div className="bg-card border border-card-border rounded-2xl overflow-hidden hover:border-primary/30 transition-colors">
       <div
         className="flex items-center gap-4 p-4 cursor-pointer"
         onClick={() => setExpanded(!expanded)}

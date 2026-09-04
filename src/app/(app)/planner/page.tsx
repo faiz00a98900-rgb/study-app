@@ -80,7 +80,7 @@ export default function PlannerPage() {
         <button
           onClick={generatePlan}
           disabled={generating}
-          className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white font-medium px-5 py-2.5 rounded-xl transition-colors text-sm disabled:opacity-50 self-start"
+          className="inline-flex items-center gap-2 btn-primary font-medium px-5 py-2.5 rounded-full transition-all text-sm disabled:opacity-50 self-start"
         >
           {generating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Calendar className="w-4 h-4" />}
           {generating ? "Generating..." : "Generate Plan"}
@@ -92,7 +92,7 @@ export default function PlannerPage() {
           <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
         </div>
       ) : sessions.length === 0 ? (
-        <div className="bg-card border border-card-border rounded-2xl p-12 text-center">
+        <div className="bg-card border border-card-border rounded-3xl p-12 text-center">
           <Calendar className="w-12 h-12 text-muted mx-auto mb-4" />
           <h3 className="text-lg font-semibold text-foreground mb-2">No Study Plan Yet</h3>
           <p className="text-muted text-sm mb-6">
@@ -101,7 +101,7 @@ export default function PlannerPage() {
           <button
             onClick={generatePlan}
             disabled={generating}
-            className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white font-medium px-6 py-3 rounded-xl transition-colors disabled:opacity-50"
+            className="inline-flex items-center gap-2 btn-primary font-medium px-6 py-3 rounded-full transition-all disabled:opacity-50"
           >
             {generating ? <Loader2 className="w-5 h-5 animate-spin" /> : null}
             Generate Study Plan
@@ -123,7 +123,7 @@ export default function PlannerPage() {
                   {dateSessions.map((session) => (
                     <div
                       key={session.id}
-                      className={`bg-card border border-card-border rounded-xl p-4 border-l-4 ${
+                      className={`bg-card border border-card-border rounded-2xl p-4 border-l-4 ${
                         priorityColors[session.topic?.difficulty === "advanced" ? "high" : session.topic?.difficulty === "intermediate" ? "medium" : "low"] || "border-l-muted"
                       } ${session.status === "completed" ? "opacity-60" : ""}`}
                     >

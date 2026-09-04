@@ -117,13 +117,13 @@ export default function UploadPage() {
       </div>
 
       {/* Subject Selection */}
-      <div className="bg-card border border-card-border rounded-2xl p-6">
+      <div className="bg-card border border-card-border rounded-3xl p-6">
         <h2 className="text-lg font-semibold text-foreground mb-4">Select Subject</h2>
         <div className="flex flex-col sm:flex-row gap-3">
           <select
             value={selectedSubject}
             onChange={(e) => setSelectedSubject(e.target.value)}
-            className="flex-1 px-4 py-3 bg-surface border border-card-border rounded-xl text-foreground focus:outline-none focus:border-primary transition-colors"
+            className="flex-1 px-4 py-3 bg-surface border border-card-border rounded-2xl text-foreground focus:outline-none focus:border-primary transition-colors"
           >
             <option value="">Choose a subject...</option>
             {subjects.map((s) => (
@@ -136,12 +136,12 @@ export default function UploadPage() {
               value={newSubjectName}
               onChange={(e) => setNewSubjectName(e.target.value)}
               placeholder="New subject name"
-              className="px-4 py-3 bg-surface border border-card-border rounded-xl text-foreground placeholder:text-muted/60 focus:outline-none focus:border-primary transition-colors"
+              className="px-4 py-3 bg-surface border border-card-border rounded-2xl text-foreground placeholder:text-muted/60 focus:outline-none focus:border-primary transition-colors"
               onKeyDown={(e) => e.key === "Enter" && addSubject()}
             />
             <button
               onClick={addSubject}
-              className="px-6 py-3 bg-primary hover:bg-primary-hover text-white font-medium rounded-xl transition-colors whitespace-nowrap"
+              className="px-6 py-3 btn-primary font-medium rounded-full transition-all whitespace-nowrap"
             >
               Add
             </button>
@@ -152,7 +152,7 @@ export default function UploadPage() {
       {/* Drop Zone */}
       <div
         {...getRootProps()}
-        className={`bg-card border-2 border-dashed rounded-2xl p-12 text-center cursor-pointer transition-all duration-200 ${
+        className={`bg-card border-2 border-dashed rounded-3xl p-12 text-center cursor-pointer transition-all duration-200 ${
           isDragActive
             ? "border-primary bg-primary/5"
             : selectedSubject
@@ -182,7 +182,7 @@ export default function UploadPage() {
 
       {/* Status */}
       {status && (
-        <div className={`flex items-center gap-3 p-4 rounded-xl border ${
+        <div className={`flex items-center gap-3 p-4 rounded-2xl border ${
           status.type === "success" ? "bg-success/10 border-success/30 text-success" :
           status.type === "error" ? "bg-danger/10 border-danger/30 text-danger" :
           "bg-primary/10 border-primary/30 text-primary"
@@ -200,7 +200,7 @@ export default function UploadPage() {
           <h2 className="text-lg font-semibold text-foreground mb-4">Recent Uploads</h2>
           <div className="space-y-3">
             {notes.map((note) => (
-              <div key={note.id} className="flex items-center gap-4 bg-card border border-card-border rounded-xl p-4">
+              <div key={note.id} className="flex items-center gap-4 bg-card border border-card-border rounded-2xl p-4">
                 <div className="w-10 h-10 rounded-lg bg-primary/15 flex items-center justify-center">
                   <File className="w-5 h-5 text-primary" />
                 </div>

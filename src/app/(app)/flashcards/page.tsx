@@ -119,7 +119,7 @@ function FlashcardsContent() {
             <button
               onClick={generateFlashcards}
               disabled={!selectedTopic}
-              className="px-6 py-3 bg-primary hover:bg-primary-hover text-white font-semibold rounded-xl transition-colors disabled:opacity-50"
+              className="px-6 py-3 btn-primary font-semibold rounded-full transition-all disabled:opacity-50"
             >
               Generate Flashcards
             </button>
@@ -225,7 +225,7 @@ function FlashcardsContent() {
               <p className="text-muted text-sm mt-1">Great work! These cards will be scheduled for review based on your ratings.</p>
               <button
                 onClick={() => { setCards([]); setCurrentIndex(0); setReviewHistory({}); }}
-                className="mt-4 inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white font-medium px-6 py-2.5 rounded-xl transition-colors"
+                className="mt-4 inline-flex items-center gap-2 btn-primary font-medium px-6 py-2.5 rounded-full transition-all"
               >
                 <RotateCcw className="w-4 h-4" /> Study Another Topic
               </button>

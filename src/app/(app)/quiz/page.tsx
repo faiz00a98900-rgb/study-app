@@ -126,7 +126,7 @@ function QuizContent() {
             <button
               onClick={generateQuiz}
               disabled={!selectedTopic}
-              className="px-6 py-3 bg-primary hover:bg-primary-hover text-white font-semibold rounded-xl transition-colors disabled:opacity-50"
+              className="px-6 py-3 btn-primary font-semibold rounded-full transition-all disabled:opacity-50"
             >
               Generate Quiz
             </button>
@@ -189,7 +189,7 @@ function QuizContent() {
           <button
             onClick={submitQuiz}
             disabled={loading || Object.keys(answers).length < questions.length}
-            className="w-full py-4 bg-primary hover:bg-primary-hover text-white font-semibold rounded-xl transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full py-4 btn-primary font-semibold rounded-2xl transition-all disabled:opacity-50 flex items-center justify-center gap-2"
           >
             {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : null}
             {loading ? "Submitting..." : "Submit Quiz"}
@@ -237,7 +237,7 @@ function QuizContent() {
           <div className="flex gap-3">
             <button
               onClick={() => { setQuestions([]); setShowResults(false); }}
-              className="flex-1 py-3 bg-primary hover:bg-primary-hover text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2"
+              className="flex-1 py-3 btn-primary font-semibold rounded-full transition-all flex items-center justify-center gap-2"
             >
               <RotateCcw className="w-5 h-5" />
               New Quiz

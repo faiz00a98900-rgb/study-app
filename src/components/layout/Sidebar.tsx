@@ -43,15 +43,18 @@ export default function Sidebar() {
   const sidebarContent = (
     <div className="flex flex-col h-full">
       {/* Logo */}
-      <div className="p-6 flex items-center gap-3">
-        <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
+      <div className="p-6 pb-4 flex items-center gap-3">
+        <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center">
           <BookOpen className="w-5 h-5 text-primary" />
         </div>
         <div>
-          <h1 className="text-lg font-bold text-foreground">StudyAI</h1>
+          <h1 className="text-lg font-bold text-foreground tracking-tight">StudyAI</h1>
           <p className="text-xs text-muted">Learn Smarter</p>
         </div>
       </div>
+
+      {/* Divider */}
+      <div className="mx-4 h-px bg-card-border" />
 
       {/* Navigation */}
       <nav className="flex-1 px-3 py-4 space-y-1">
@@ -63,13 +66,13 @@ export default function Sidebar() {
               key={item.href}
               href={item.href}
               onClick={() => setMobileOpen(false)}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+              className={`flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium transition-all duration-200 ${
                 isActive
-                  ? "bg-primary/15 text-primary glow-primary"
+                  ? "bg-primary/10 text-primary"
                   : "text-muted hover:text-foreground hover:bg-surface"
               }`}
             >
-              <Icon className="w-5 h-5" />
+              <Icon className={`w-[18px] h-[18px] ${isActive ? "text-primary" : ""}`} />
               {item.label}
             </Link>
           );
@@ -80,9 +83,9 @@ export default function Sidebar() {
       <div className="p-3 border-t border-card-border">
         <button
           onClick={handleLogout}
-          className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-muted hover:text-danger hover:bg-danger/10 w-full transition-colors"
+          className="flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-medium text-muted hover:text-danger hover:bg-danger/5 w-full transition-colors"
         >
-          <LogOut className="w-5 h-5" />
+          <LogOut className="w-[18px] h-[18px]" />
           Sign Out
         </button>
       </div>
@@ -94,7 +97,7 @@ export default function Sidebar() {
       {/* Mobile toggle */}
       <button
         onClick={() => setMobileOpen(!mobileOpen)}
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 rounded-xl bg-card border border-card-border"
+        className="lg:hidden fixed top-4 left-4 z-50 p-2.5 rounded-2xl bg-card border border-card-border shadow-sm"
       >
         {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
       </button>
@@ -102,7 +105,7 @@ export default function Sidebar() {
       {/* Mobile sidebar overlay */}
       {mobileOpen && (
         <div
-          className="lg:hidden fixed inset-0 z-40 bg-black/50"
+          className="lg:hidden fixed inset-0 z-40 bg-foreground/20 backdrop-blur-sm"
           onClick={() => setMobileOpen(false)}
         />
       )}
@@ -117,7 +120,7 @@ export default function Sidebar() {
       </aside>
 
       {/* Desktop sidebar */}
-      <aside className="hidden lg:flex flex-col w-64 min-h-screen bg-card border-r border-card-border">
+      <aside className="hidden lg:flex flex-col w-[260px] min-h-screen bg-card border-r border-card-border">
         {sidebarContent}
       </aside>
     </>

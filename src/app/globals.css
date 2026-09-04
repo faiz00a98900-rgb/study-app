@@ -1,18 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0f0f23;
-  --foreground: #e2e8f0;
-  --card: #1a1a2e;
-  --card-border: #2d2d44;
-  --primary: #6366f1;
-  --primary-hover: #818cf8;
-  --secondary: #22d3ee;
-  --accent: #f59e0b;
-  --success: #10b981;
-  --danger: #ef4444;
-  --muted: #64748b;
-  --surface: #16162a;
+  --background: #FDF9F3;
+  --foreground: #2D1B1B;
+  --card: #FFFFFF;
+  --card-border: #E8DDD3;
+  --primary: #7B2D3B;
+  --primary-hover: #8B3A4A;
+  --primary-dark: #5C1F2C;
+  --secondary: #C19A6B;
+  --accent: #D4A574;
+  --success: #4A7C59;
+  --danger: #B83A3A;
+  --muted: #8B7D75;
+  --surface: #F5EDE4;
+  --hero: #3D1520;
+  --hero-light: #5C2433;
+  --cream: #FAF6F0;
+  --cream-dark: #EFE5D8;
 }
 
 @theme inline {
@@ -22,12 +27,17 @@
   --color-card-border: var(--card-border);
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
+  --color-primary-dark: var(--primary-dark);
   --color-secondary: var(--secondary);
   --color-accent: var(--accent);
   --color-success: var(--success);
   --color-danger: var(--danger);
   --color-muted: var(--muted);
   --color-surface: var(--surface);
+  --color-hero: var(--hero);
+  --color-hero-light: var(--hero-light);
+  --color-cream: var(--cream);
+  --color-cream-dark: var(--cream-dark);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -38,42 +48,121 @@ body {
   font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
+/* ===== Maroon + Cream Aesthetic Utilities ===== */
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, #7B2D3B 0%, #A85A6A 50%, #5C1F2C 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
-::-webkit-scrollbar-track {
-  background: var(--surface);
+
+.text-gradient-light {
+  background: linear-gradient(135deg, #FAF6F0 0%, #F5EDE4 50%, #FFFFFF 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
-::-webkit-scrollbar-thumb {
-  background: var(--card-border);
-  border-radius: 3px;
+
+/* Primary button */
+.btn-primary {
+  background: linear-gradient(135deg, #7B2D3B 0%, #5C1F2C 100%);
+  color: #FAF6F0;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(123, 45, 59, 0.25);
+  border: 1px solid rgba(250, 246, 240, 0.1);
 }
-::-webkit-scrollbar-thumb:hover {
-  background: var(--muted);
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(123, 45, 59, 0.35);
+  filter: brightness(1.1);
 }
+.btn-primary:disabled {
+  opacity: 0.5;
+  transform: none;
+  cursor: not-allowed;
+}
+
+/* Ghost/outline button */
+.btn-outline {
+  background: transparent;
+  color: #7B2D3B;
+  border: 1.5px solid #E8DDD3;
+  transition: all 0.25s ease;
+}
+.btn-outline:hover {
+  background: #FAF6F0;
+  border-color: #7B2D3B;
+  transform: translateY(-1px);
+}
+
+/* Card lift effect */
+.card-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(123, 45, 59, 0.12);
+}
+
+/* Floating animation blobs */
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: blob-float 10s ease-in-out infinite;
+}
+@keyframes blob-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* Gentle fade in */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D8CCC0; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #C4B5A5; }
 
 /* Flashcard flip animation */
-.perspective {
-  perspective: 1000px;
-}
-.backface-hidden {
-  backface-visibility: hidden;
-}
-.rotate-y-180 {
-  transform: rotateY(180deg);
-}
-.preserve-3d {
-  transform-style: preserve-3d;
+.perspective { perspective: 1000px; }
+.backface-hidden { backface-visibility: hidden; }
+.rotate-y-180 { transform: rotateY(180deg); }
+.preserve-3d { transform-style: preserve-3d; }
+
+/* Soft inner glow for focus states */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #7B2D3B !important;
+  box-shadow: 0 0 0 3px rgba(123, 45, 59, 0.1);
 }
 
-/* Glow effects */
-.glow-primary {
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+/* Maroon glow */
+.glow-maroon {
+  box-shadow: 0 0 24px rgba(123, 45, 59, 0.2);
 }
-.glow-success {
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+
+/* Hero maroon gradient background */
+.hero-gradient {
+  background: linear-gradient(135deg, #3D1520 0%, #5C2433 40%, #7B2D3B 100%);
 }
-.glow-accent {
-  box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+
+/* Subtle pattern overlay */
+.pattern-overlay {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(250,246,240,0.05) 1px, transparent 0);
+  background-size: 24px 24px;
 }

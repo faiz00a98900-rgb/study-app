@@ -159,7 +159,7 @@ export default function ProfilePage() {
         <button
           onClick={saveProfile}
           disabled={saving}
-          className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white font-medium px-6 py-3 rounded-xl transition-colors disabled:opacity-50"
+          className="inline-flex items-center gap-2 btn-primary font-medium px-6 py-3 rounded-full transition-all disabled:opacity-50"
         >
           {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
           {saved ? "Saved!" : "Save Changes"}
@@ -190,7 +190,7 @@ export default function ProfilePage() {
           />
           <button
             onClick={addSubject}
-            className="inline-flex items-center gap-2 bg-primary hover:bg-primary-hover text-white font-medium px-5 py-3 rounded-xl transition-colors whitespace-nowrap"
+            className="inline-flex items-center gap-2 btn-primary font-medium px-5 py-3 rounded-full transition-all whitespace-nowrap"
           >
             <Plus className="w-4 h-4" />
             Add
